@@ -1,48 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { Button, PaperProvider, TextInput } from 'react-native-paper';
+import { PaperProvider } from 'react-native-paper';
 import { theme } from './features/theme';
+import { NavigationContainer } from '@react-navigation/native';
+import { Login } from './features/login/page/Login';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Home } from './features/home/page/Home';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <PaperProvider theme={theme}>
-      <View style={styles.container}>
-        <TextInput
-          style={styles.input}
-          mode="outlined"
-          label="e-mail/phone"
-          placeholder="Type sromething"
-          right={<TextInput.Icon icon="account-circle" />}
-        />
-        <TextInput
-          style={styles.input}
-          mode="outlined"
-          label="password"
-          secureTextEntry
-          placeholder="Type sromething"
-          right={<TextInput.Icon icon="lock" />}
-        />
-        <Button style={styles.button} icon="login" mode="contained" onPress={() => console.log('Pressed')}>
-          Log In
-        </Button>
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Login'>
+          <Stack.Screen name='Login' component={Login} />
+          <Stack.Screen name='Home' component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </PaperProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    gap: 10,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 26
-  },
-  input: {
-    width: '100%'
-  },
-  button: {
-    width: '100%',
-    borderRadius: 4
-  }
-});
