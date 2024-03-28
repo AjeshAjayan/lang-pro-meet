@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper';
 import { LoginStore } from '../store/store';
