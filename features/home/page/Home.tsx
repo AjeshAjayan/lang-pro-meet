@@ -10,7 +10,7 @@ export const Home = () => {
     return <View style={styles.container}>
         <Button onPress={() => {
             LoginStore.update(l => {
-                l.count++
+                l.count++                   
             })
         }}> Click me </Button>
         <Text>{count}</Text>
